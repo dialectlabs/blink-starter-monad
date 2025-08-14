@@ -6,7 +6,8 @@ import { parseEther } from "viem";
 const blockchain = "eip155:10143";
 
 // Wallet address that will receive the tips
-const donationWallet = "0xd2135CfB216b74109775236E36d4b433F1DF507B"; // wevm.eth multichain wallet
+const donationWallet =
+  process.env.DONATION_WALLET || "0xd2135CfB216b74109775236E36d4b433F1DF507B"; // wevm.eth multichain wallet
 
 // Create headers with CAIP blockchain ID
 const headers = {
