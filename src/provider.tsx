@@ -1,20 +1,30 @@
 "use client";
 
+import { config } from "@/config";
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ConnectKitProvider } from "connectkit";
 import { type PropsWithChildren } from "react";
 import { WagmiProvider } from "wagmi";
-import { config } from "@/config";
 
 // React Query client
 const queryClient = new QueryClient();
 
-// Providers are used to wrap the app in Wagmi and ConnectKit, see layout.tsx for more info
 export const Providers = ({ children }: PropsWithChildren) => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <ConnectKitProvider>{children}</ConnectKitProvider>
+        <DynamicContextProvider
+          settings={{
+            // Find your environment id at https://app.dynamic.xyz/dashboard/developer
+            environmentId:
+              process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID ||
+              "d32dce1b-2c12-4c0f-937c-9fcc2f4b2249",
+            walletConnectors: [EthereumWalletConnectors],
+          }}
+        >
+          {children}
+        </DynamicContextProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

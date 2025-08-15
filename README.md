@@ -17,12 +17,20 @@ https://docs.dialect.to/blinks/blinks-provider/guides/tip-blink
 
 ## Environment Setup
 
-In the `.env` file, we have preset a `DONATION_WALLET` address as well as the public RPC endpoint for the Monad testnet.
+Create a `.env` file in the root directory with the following variables:
 
-If you prefer to use your own wallet or RPC, please update the `.env` file accordingly.
+```bash
+# Monad RPC URL (testnet)
+NEXT_PUBLIC_RPC_URL=https://rpc.testnet.monad.xyz
 
-- `NEXT_PUBLIC_RPC_URL`: Monad RPC URL
-- `DONATION_WALLET`: The wallet address to receive donations
+# Wallet address to receive donations
+DONATION_WALLET=0xd2135CfB216b74109775236E36d4b433F1DF507B
+
+# Dynamic.xyz environment ID
+NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID=your_environment_id_here
+```
+
+**Note:** The `DONATION_WALLET` defaults to a wevm.eth multichain wallet for demonstration purposes. Update this to your own wallet address for production use.
 
 ## Getting Started
 

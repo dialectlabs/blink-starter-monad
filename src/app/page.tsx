@@ -2,17 +2,16 @@
 
 import {
   Blink,
-  useBlink,
   useActionsRegistryInterval,
+  useBlink,
 } from "@dialectlabs/blinks";
 
 import "@dialectlabs/blinks/index.css";
 
 import { useEvmWagmiAdapter } from "@dialectlabs/blinks/hooks/evm";
 
-import { useModal } from "connectkit";
-
 import { StepCard } from "@/components/step-card";
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 // Text for the steps on the left side of the page for the user to follow
 const steps = [
@@ -40,13 +39,12 @@ export default function Home() {
   // Actions registry interval
   useActionsRegistryInterval();
 
-  // ConnectKit modal
-  const { setOpen } = useModal();
+  const { setShowAuthFlow } = useDynamicContext();
 
   // Wagmi adapter, used to connect to the wallet
   const { adapter } = useEvmWagmiAdapter({
     onConnectWalletRequest: async () => {
-      setOpen(true);
+      setShowAuthFlow(true);
     },
   });
 

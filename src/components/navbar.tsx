@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ConnectKitButton } from "connectkit";
 import { MenuButton } from "./menu-button";
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 
 const navBarLinks = [
   {
@@ -57,7 +57,7 @@ export function Navbar() {
             />
           ))}
         </div>
-        <ConnectKitButton />
+        <DynamicWidget />
       </div>
     </nav>
   );
