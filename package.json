@@ -19,7 +19,7 @@
     "@dynamic-labs/wagmi-connector": "^4.25.10",
     "@solana/actions": "^1.6.6",
     "@tanstack/react-query": "^5.85.2",
-    "next": "^14.2.26",
+    "next": "^14.2.35",
     "react": "^18",
     "react-dom": "^18",
     "viem": "^2.33.3",
